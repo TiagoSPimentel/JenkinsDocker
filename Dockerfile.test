@@ -1,0 +1,6 @@
+FROM openjdk:17
+WORKDIR /app
+COPY . .
+RUN javac -cp .:junit-4.13.2.jar:hamcrest-core-1.3.jar src/test/java/ConversorTemperaturaTest.java
+CMD ["java", "-cp", ".:junit-4.13.2.jar:hamcrest-core-1.3.jar:src/test/java", "org.junit.runner.JUnitCore", "ConversorTemperaturaTest"]
+
