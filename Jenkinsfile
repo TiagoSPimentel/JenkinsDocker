@@ -1,5 +1,5 @@
 pipeline {
-    agent none // necessário quando você usa `agent` em cada stage
+    agent none
 
     stages {
         stage('Build em Container') {
@@ -32,10 +32,10 @@ pipeline {
                     curl -L -o libs/hamcrest-core-1.3.jar https://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
 
                     echo "Compilando testes..."
-                    javac -cp libs/* src/test/java/ConversorTemperaturaTest.java
+                    javac -cp "libs/junit-4.13.2.jar:libs/hamcrest-core-1.3.jar:src/main/java" src/test/java/ConversorTemperaturaTest.java
 
                     echo "Executando testes..."
-                    java -cp libs/*:src/test/java:src/main/java org.junit.runner.JUnitCore ConversorTemperaturaTest
+                    java -cp "libs/*:src/main/java:src/test/java" org.junit.runner.JUnitCore ConversorTemperaturaTest
                 '''
             }
         }
