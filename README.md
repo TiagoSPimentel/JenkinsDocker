@@ -1,4 +1,4 @@
-##Cenários:
+Cenários:
 Cenário 1: tudo certo
 O código está correto e os testes passam.
 
